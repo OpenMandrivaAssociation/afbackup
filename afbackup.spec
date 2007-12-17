@@ -26,7 +26,6 @@ Source0:        %name-%version.tar.bz2
 Source1:	afbackup-xinetd.afbackup
 Source3:	afbackup-afmbackup-rc
 Patch0:		afbackup-3.3.6-configs.patch
-BuildRoot:      %_tmppath/%name-buildroot
 Requires:	sharutils
 BuildRequires:  libopenssl-devel zlib1-devel
 
