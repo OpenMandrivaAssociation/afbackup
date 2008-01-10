@@ -21,7 +21,7 @@ Version:        %version
 Release:        %release
 License:        GPL
 Group:          Archiving/Backup
-URL:            http://www.afbackup.org
+URL:            http://afbackup.sf.net
 Source0:        %name-%version.tar.bz2
 Source1:	afbackup-xinetd.afbackup
 Source3:	afbackup-afmbackup-rc
