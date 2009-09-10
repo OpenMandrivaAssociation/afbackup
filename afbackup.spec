@@ -1,6 +1,6 @@
 %define name    afbackup
 %define version 3.4
-%define release %mkrel 4
+%define release %mkrel 5
 
 %define cryptkey afbackup
 %define clientconf afclient.conf
