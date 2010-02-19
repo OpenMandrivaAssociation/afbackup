@@ -1,6 +1,6 @@
 %define name    afbackup
-%define version 3.4
-%define release %mkrel 5
+%define version 3.5.3
+%define release %mkrel 1
 
 %define cryptkey afbackup
 %define clientconf afclient.conf
@@ -22,10 +22,11 @@ Release:        %release
 License:        GPL
 Group:          Archiving/Backup
 URL:            http://afbackup.sf.net
-Source0:        %name-%version.tar.bz2
+Source0:        %name-%version.tar.gz
 Source1:	afbackup-xinetd.afbackup
 Source3:	afbackup-afmbackup-rc
 Patch0:		afbackup-3.3.6-configs.patch
+Patch1:		afbackup-3.5.3-fix-str-fmt.patch
 BuildRoot:      %_tmppath/%name-buildroot
 Requires:	sharutils
 BuildRequires:  libopenssl-devel zlib1-devel
@@ -90,9 +91,10 @@ http://afbackup-doc.sourceforge.net/html/
 %prep
 %setup -q -n %{name}-%{version}
 %patch0 -p1 -b .cfg
+%patch1 -p0 -b .str
 
 %build
-%configure --without-prefixext \
+%configure2_5x --without-prefixext \
     --with-clientbindir=%{bindir} \
     --with-clientconf=%{clientconf} \
     --with-clientconfdir=%{confdir} \
@@ -221,6 +223,7 @@ rm -rf %buildroot
 %{rexecdir}/full_backup
 %{rexecdir}/incr_backup
 %config(noreplace) %{_sysconfdir}/xinetd.d/afbackup-xinetd
+%config(noreplace) %{_sysconfdir}/afbackup/init.d/afbackup
 %attr(755,root,root) %config(noreplace) %{_initrddir}/afbackup
 %attr(750,root,adm) %dir %{confdir}
 %attr(640,root,adm) %config(noreplace) %{confdir}/%{serverconf}
