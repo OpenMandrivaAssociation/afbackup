@@ -26,6 +26,7 @@ Source0:        %name-%version.tar.gz
 Source1:	afbackup-xinetd.afbackup
 Source3:	afbackup-afmbackup-rc
 Patch0:		afbackup-3.3.6-configs.patch
+#patch1 sent upstream (Kharec)
 Patch1:		afbackup-3.5.3-fix-str-fmt.patch
 BuildRoot:      %_tmppath/%name-buildroot
 Requires:	sharutils
