@@ -1,6 +1,6 @@
 %define name    afbackup
 %define version 3.5.3
-%define release %mkrel 2
+%define release %mkrel 3
 
 %define cryptkey afbackup
 %define clientconf afclient.conf
@@ -30,7 +30,7 @@ Patch0:		afbackup-3.3.6-configs.patch
 Patch1:		afbackup-3.5.3-fix-str-fmt.patch
 BuildRoot:      %_tmppath/%name-buildroot
 Requires:	sharutils
-BuildRequires:  libopenssl-devel zlib1-devel
+BuildRequires:  openssl-devel zlib-devel
 
 %description
 Client-Server Backup System
