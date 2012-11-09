@@ -1,0 +1,20 @@
+--- genutils.c.str	2010-02-19 11:09:45.000000000 +0100
++++ genutils.c	2010-02-19 11:10:06.000000000 +0100
+@@ -1838,7 +1838,7 @@
+ 	  d = (i >> 1) + 1;
+ 	  act_idx += d;
+ 	  if(act_idx > nel){
+-	    fprintf(stderr, compiler_error);
++	    fprintf(stderr, "%s", compiler_error);
+ 	    exit(0);
+ 	  }
+ 	}
+@@ -1852,7 +1852,7 @@
+ 	  d = ((act_idx - 1) >> 1) + 1;
+ 	  act_idx -= d;
+ 	  if(act_idx < 1){
+-	    fprintf(stderr, compiler_error);
++	    fprintf(stderr, "%s", compiler_error);
+ 	    exit(0);
+ 	  }
+ 	}

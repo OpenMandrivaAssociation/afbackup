@@ -1,0 +1,22 @@
+--- afbackup-3.3.6/server.conf.in.cfg	Thu Nov 22 09:41:16 2001
++++ afbackup-3.3.6/server.conf.in	Wed Mar 13 14:24:32 2002
+@@ -121,7 +121,7 @@
+ #Changer-Lockfile:	%V/changer.lock
+ #
+ # Filename with encryption key for authentication
+-#Encryption-Key-File:	%C/cryptkey
++Encryption-Key-File:	%C/cryptkey
+ 
+ #
+ # SPECIFICATIONS FOR REMOTE_EXECUTION
+--- afbackup-3.3.6/client.conf.in.cfg	Tue Feb  5 10:10:00 2002
++++ afbackup-3.3.6/client.conf.in	Wed Mar 13 14:25:09 2002
+@@ -95,7 +95,7 @@
+ #Client-Identifier:	
+ #
+ # Filename with encryption key for authentication
+-#EncryptionKeyFile:	%C/cryptkey
++EncryptionKeyFile:	%C/cryptkey
+ #
+ # Directory for varying files
+ VarDirectory:		@clientvardir@
