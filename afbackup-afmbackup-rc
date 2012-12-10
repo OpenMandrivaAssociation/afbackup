@@ -1,0 +1,67 @@
+#!/bin/sh
+#
+# /etc/init.d/afmbackup
+#
+# chkconfig: 2345 51 49
+# description: The AFBackup Multistream server is network backup server
+# config: /etc/afbackup/afserver.conf
+# source function library
+. /etc/rc.d/init.d/functions
+
+RETVAL=0
+prog="afmbackup server"
+afmserver="/usr/sbin/afmserver"
+config="-d -p afmbackup /etc/afbackup/afserver.conf"
+
+stop() {
+	echo -n $"Stopping $prog: "
+	killproc $afmserver
+	RETVAL=$?
+	echo
+	[ $RETVAL -eq 0 ] && rm -f /var/lock/subsys/afbackup
+	return $RETVAL
+}
+
+start() {
+	echo -n $"Starting $prog: "
+	daemon $afmserver $config
+	sleep 1
+	/sbin/pidof $afmserver >/var/run/afbackup.pid
+	echo
+	RETVAL=$?
+	[ $RETVAL -eq 0 ] && touch /var/lock/subsys/afbackup
+	return $RETVAL
+}
+
+restart() {
+	stop
+	start
+}
+
+case "$1" in
+  start)
+	start
+	;;
+  stop)
+	stop
+	;;
+  restart)
+        restart
+        ;;
+  reload)
+  		restart
+		;;
+  condrestart)
+	[ -f /var/lock/subsys/afmserver ] && restart || : 
+        ;;
+  status)
+        status $afmserver
+	RETVAL=$?
+        ;;
+  *)
+	echo "Usage: $0 {start|stop|restart|condrestart|status}"
+	RETVAL=1
+esac
+
+exit $RETVAL
+ 

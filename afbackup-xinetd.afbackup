@@ -1,0 +1,13 @@
+## AFBackup server. Default is on
+service afbackup
+{
+        socket_type     = stream
+        protocol        = tcp
+        wait            = no
+        user            = root
+        only_from       = 127.0.0.1/8
+        server          = /usr/sbin/afserver
+        server_args     = /etc/afbackup/afserver.conf
+        port            = 2988
+        flags           = REUSE
+}

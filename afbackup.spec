@@ -1,7 +1,3 @@
-%define name    afbackup
-%define version 3.5.3
-%define release %mkrel 3
-
 %define cryptkey afbackup
 %define clientconf afclient.conf
 %define serverconf afserver.conf
@@ -13,24 +9,22 @@
 %define rexecdir %{_libexecdir}/afbackup
 %define libdir %{confdir}
 
-%define summary Afbackup is a client-server backup system
-
-Summary:        %summary
-Name:           %name
-Version:        %version
-Release:        %release
-License:        GPL
-Group:          Archiving/Backup
-URL:            http://afbackup.sf.net
-Source0:        %name-%version.tar.gz
+Summary:	Afbackup is a client-server backup system
+Name:		afbackup
+Version:	3.5.3
+Release:	4
+License:	GPL
+Group:		Archiving/Backup
+URL:		http://afbackup.sf.net
+Source0:	%{name}-%{version}.tar.gz
 Source1:	afbackup-xinetd.afbackup
 Source3:	afbackup-afmbackup-rc
 Patch0:		afbackup-3.3.6-configs.patch
 #patch1 sent upstream (Kharec)
 Patch1:		afbackup-3.5.3-fix-str-fmt.patch
-BuildRoot:      %_tmppath/%name-buildroot
 Requires:	sharutils
-BuildRequires:  openssl-devel zlib-devel
+BuildRequires:  pkgconfig(openssl)
+BuildRequires:  pkgconfig(zlib)
 
 %description
 Client-Server Backup System
@@ -119,10 +113,9 @@ http://afbackup-doc.sourceforge.net/html/
     --sysconfdir=%{confdir} \
     --with-des --with-des-ldflag=-lcrypto --with-des-include=/usr/include/openssl
 
-echo %{cryptkey} | make all OPTIMIZE="$RPM_OPT_FLAGS"
+echo %{cryptkey} | make all OPTIMIZE="%{optflags}"
 
 %install
-rm -rf %buildroot
 mkdir -p %{buildroot}%{_mandir}/man8
 mkdir -p %{buildroot}%{logdir}
 mkdir -p %{buildroot}%{_sysconfdir}/xinetd.d
@@ -210,14 +203,11 @@ if [ $1 -ge 1 ] ; then
   /sbin/service afbackup condrestart 2>&1 > /dev/null || :
 fi
 
-%clean
-rm -rf %buildroot
-
 %files
-%defattr(-,root,root)
 %doc CONFIG INTRO README PROGRAMS
 %attr(700,root,adm) %dir %{commondir}
-%attr(700,root,adm) %dir %{rexecdir}
+# ATM it's the same as commondir so skip
+#attr(700,root,adm) %dir %{rexecdir}
 %{rexecdir}/afverify
 %{rexecdir}/verify
 %{rexecdir}/copy_tape
@@ -276,38 +266,12 @@ rm -rf %buildroot
 %defattr(-,root,root)
 %doc CONFIG INTRO README PROGRAMS
 %attr(750,root,adm) %dir %{commondir}
-%attr(640,root,adm) %{commondir}/aftcllib.tcl
 %attr(750,root,adm) %{commondir}/afrestore
 %attr(750,root,adm) %dir %{confdir}
-%attr(640,root,adm) %config(noreplace) %{confdir}/%{clientconf}
-%attr(600,root,adm) %config(noreplace) %{confdir}/cryptkey
 %attr(711,root,adm) %dir %{vardir}
 %attr(750,root,adm) %dir %{logdir}
-%attr(750,root,adm) %{bindir}/afbackout
-%attr(750,root,adm) %{bindir}/afbackup
-%attr(750,root,adm) %{bindir}/afclient
-%attr(750,root,adm) %{bindir}/afclientconfig
-%attr(750,root,adm) %{bindir}/afrestore
-%attr(750,root,adm) %{bindir}/afverify
-%attr(750,root,adm) %{bindir}/autocptapes
 %attr(750,root,adm) %{bindir}/clientconfig
-%attr(750,root,adm) %{bindir}/copy_tape
-%attr(750,root,adm) %{bindir}/full_backup
-%attr(750,root,adm) %{bindir}/incr_backup
-%attr(750,root,adm) %{bindir}/xafclientconfig
-%attr(750,root,adm) %{bindir}/xafrestore
 %attr(750,root,adm) %{bindir}/xclientconfig
 %attr(750,root,adm) %{bindir}/xrestore
-%attr(750,root,adm) %{bindir}/__descrpt
-%attr(750,root,adm) %{bindir}/__packpats
-%attr(750,root,adm) %{bindir}/__piper
-%attr(750,root,adm) %{bindir}/__z
-%{_mandir}/man8/afclient.8*
-%{_mandir}/man8/%{clientconf}.8*
-%{_mandir}/man8/afrestore.8*
-%{_mandir}/man8/afverify.8*
-%{_mandir}/man8/copy_tape.8*
-%{_mandir}/man8/full_backup.8*
-%{_mandir}/man8/incr_backup.8*
-%{_mandir}/man8/xafrestore.8*
+
 
