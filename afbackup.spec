@@ -9,7 +9,7 @@
 %define rexecdir %{_libexecdir}/afbackup
 %define libdir %{confdir}
 
-Summary:	Afbackup is a client-server backup system
+Summary:	Client-server backup system
 Name:		afbackup
 Version:	3.5.3
 Release:	4
