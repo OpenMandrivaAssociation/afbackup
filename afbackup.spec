@@ -12,7 +12,7 @@
 Summary:	Client-server backup system
 Name:		afbackup
 Version:	3.5.3
-Release:	4
+Release:	5
 License:	GPL
 Group:		Archiving/Backup
 URL:		http://afbackup.sf.net
@@ -263,7 +263,6 @@ fi
 %{_mandir}/*/*
 
 %files client
-%defattr(-,root,root)
 %doc CONFIG INTRO README PROGRAMS
 %attr(750,root,adm) %dir %{commondir}
 %attr(750,root,adm) %{commondir}/afrestore
