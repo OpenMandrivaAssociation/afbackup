@@ -12,19 +12,20 @@
 Summary:	Client-server backup system
 Name:		afbackup
 Version:	3.5.3
-Release:	5
+Release:	6
 License:	GPL
 Group:		Archiving/Backup
-URL:		http://afbackup.sf.net
+Url:		http://afbackup.sf.net
 Source0:	%{name}-%{version}.tar.gz
 Source1:	afbackup-xinetd.afbackup
 Source3:	afbackup-afmbackup-rc
+Source100:	%{name}.rpmlintrc
 Patch0:		afbackup-3.3.6-configs.patch
 #patch1 sent upstream (Kharec)
 Patch1:		afbackup-3.5.3-fix-str-fmt.patch
 Requires:	sharutils
-BuildRequires:  pkgconfig(openssl)
-BuildRequires:  pkgconfig(zlib)
+BuildRequires:	pkgconfig(openssl)
+BuildRequires:	pkgconfig(zlib)
 
 %description
 Client-Server Backup System
