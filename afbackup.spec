@@ -12,7 +12,7 @@
 Summary:	Client-server backup system
 Name:		afbackup
 Version:	3.5.3
-Release:	6
+Release:	7
 License:	GPL
 Group:		Archiving/Backup
 Url:		http://afbackup.sf.net
