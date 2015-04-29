@@ -214,8 +214,8 @@ fi
 %{rexecdir}/copy_tape
 %{rexecdir}/full_backup
 %{rexecdir}/incr_backup
-%{rexecdir}/afrestore
 %{rexecdir}/update_indexes
+%{rexecdir}/afrestore
 %dir %{confdir}/init.d
 %config(noreplace) %{_sysconfdir}/xinetd.d/afbackup-xinetd
 %config(noreplace) %{_sysconfdir}/afbackup/init.d/afbackup
@@ -226,7 +226,6 @@ fi
 %attr(640,root,adm) %config(noreplace) %{confdir}/%{clientconf}
 %attr(600,root,adm) %config(noreplace) %{confdir}/cryptkey
 %attr(640,root,adm) %{commondir}/aftcllib.tcl
-%attr(750,root,adm) %{commondir}/update_indexes
 %attr(711,root,adm) %dir %{vardir}
 %attr(640,root,adm) %config(noreplace) %{vardir}/readonly_tapes
 %attr(750,root,adm) %dir %{logdir}
