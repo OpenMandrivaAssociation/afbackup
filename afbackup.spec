@@ -214,6 +214,9 @@ fi
 %{rexecdir}/copy_tape
 %{rexecdir}/full_backup
 %{rexecdir}/incr_backup
+%{rexecdir}/afrestore
+%{rexecdir}/update_indexes
+%dir %{confdir}/init.d
 %config(noreplace) %{_sysconfdir}/xinetd.d/afbackup-xinetd
 %config(noreplace) %{_sysconfdir}/afbackup/init.d/afbackup
 %attr(755,root,root) %config(noreplace) %{_initrddir}/afbackup
@@ -266,12 +269,12 @@ fi
 %files client
 %doc CONFIG INTRO README PROGRAMS
 %attr(750,root,adm) %dir %{commondir}
-%attr(750,root,adm) %{commondir}/afrestore
 %attr(750,root,adm) %dir %{confdir}
 %attr(711,root,adm) %dir %{vardir}
 %attr(750,root,adm) %dir %{logdir}
 %attr(750,root,adm) %{bindir}/clientconfig
 %attr(750,root,adm) %{bindir}/xclientconfig
 %attr(750,root,adm) %{bindir}/xrestore
+
 
 
