@@ -15,7 +15,7 @@ Version:	3.5.3
 Release:	7
 License:	GPL
 Group:		Archiving/Backup
-Url:		http://afbackup.sf.net
+Url:		https://afbackup.sf.net
 Source0:	%{name}-%{version}.tar.gz
 Source1:	afbackup-xinetd.afbackup
 Source3:	afbackup-afmbackup-rc
