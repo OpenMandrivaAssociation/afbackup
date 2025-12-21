@@ -24,6 +24,11 @@ Patch0:		afbackup-3.3.6-configs.patch
 #patch1 sent upstream (Kharec)
 Patch1:		afbackup-3.5.3-fix-str-fmt.patch
 Requires:	sharutils
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	pkgconfig(openssl)
 BuildRequires:	pkgconfig(zlib)
 
